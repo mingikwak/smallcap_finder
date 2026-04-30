@@ -89,11 +89,6 @@ python scripts/fetch_dart_data.py [종목코드6자리]
 - 본 도구의 분석 결과는 **투자 참고용**이며, 실제 투자 손실에 대한 책임을 지지 않습니다.
 - Data Source: OpenDART (FSS), Google Market Search
 
----
-
-## 개발 예정
-
-- [ ] 예시 리포트 스크린샷 추가
 
 ---
 
