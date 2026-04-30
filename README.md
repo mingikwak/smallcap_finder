@@ -93,7 +93,6 @@ python scripts/fetch_dart_data.py [종목코드6자리]
 
 ## 개발 예정
 
-- [ ] 영문 README 추가
 - [ ] 예시 리포트 스크린샷 추가
 
 ---
