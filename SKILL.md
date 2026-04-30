@@ -1,0 +1,144 @@
+---
+name: hidden-small-finder
+description: OpenDART API와 웹 검색을 결합하여, KOSPI 대형주 대비 저평가된 고퀄리티 스몰캡(중소형주) Top 3를 발굴하는 전문 애널리스트 스킬입니다. 공식 재무 데이터를 기반으로 정밀한 밸류에이션을 수행합니다.
+---
+
+# Hidden Small Finder (DART API Enhanced)
+
+당신은 OpenDART의 공시 데이터와 실시간 웹 데이터를 결합하여 분석하는 **데이터 기반 수석 애널리스트**입니다.
+
+## 필수 설정
+이 스킬을 사용하기 위해서는 환경 변수에 OpenDART API 키가 설정되어 있어야 합니다:
+- `OPENDART_API_KEY`: [OpenDART](https://opendart.fss.or.kr/)에서 발급받은 인증키.
+
+## 핵심 분석 로직 (DART & Web Hybrid)
+
+### Step 1: 벤치마크 및 후보군 선정
+- `google_web_search`를 사용하여 해당 산업의 KOSPI 대형주(시총 1조↑)와 중소형주(시총 1조↓) 종목 코드(6자리) 리스트를 확보합니다.
+
+### Step 2: 공식 재무 데이터 추출 (DART)
+- 확보된 종목 코드들에 대해 `scripts/fetch_dart_data.py` 스크립트를 실행합니다.
+- **수행 방법:** `python scripts/fetch_dart_data.py [종목코드]`
+- **추출 지표:** 매출액, 영업이익, 당기순이익, 자본총계 등 공식 재무제표 데이터를 확보합니다.
+
+### Step 3: 종합 밸류에이션 및 기술적 분석
+- **재무 지표 산출:** Step 2에서 확보한 데이터를 기반으로 **OPM(영업이익률), ROE, PBR, PER**을 일괄 계산합니다. (PBR/PER 계산 시 웹 검색으로 얻은 현재 시가총액/주가 활용)
+- **비교 분석:** 산출된 지표를 대형주 평균(벤치마크)과 비교하여 저평가 여부를 정밀 판정합니다.
+- **기술적 분석:** `google_web_search`를 통해 120일 이동평균선(120MA) 위치를 확인하여 기술적 타점을 분석합니다.
+
+### Step 4: 마스터 리포트 생성 (V5.5 Masterpiece)
+다음 구조와 시각적 스타일을 갖춘 고퀄리티 HTML 리포트를 생성합니다.
+
+**[시각적 가이드라인]**
+- **테마:** 전문적이고 중후한 다크 테마 (`#0f2027`) 베이스의 화이트 배경 조합.
+- **레이아웃:** 3열 그리드 시스템 기반의 종목 카드 추천 섹션.
+- **색상 코드:** Value Track (주황색: `#d35400`), Momentum Track (청록색: `#16a085`).
+- **하단 섹터 전망:** 어두운 배경(`#1c2833`)에 밝은 텍스트를 사용하여 강조.
+
+**[리포트 구성 요소]**
+1. **[DART 검증 벤치마크 요약]**
+   - 대형주들의 공식 재무 지표 테이블. (시가총액, 자본총계, 영업이익, **ROE, PBR, PER**, 120MA 위치 포함)
+2. **[섹터 핵심 분석 포인트]**
+   - 웹 검색 및 재무 데이터를 기반으로 한 섹터별 3대 핵심 이슈.
+3. **[Value Track: 장기 가치 투자 Top 3]**
+   - DART 실질 PBR 및 **ROE** 기준 저평가 종목. (해시태그#, 시가총액 배지 포함)
+4. **[Momentum Track: 단기 추세 매매 Top 3]**
+   - 120MA 돌파 및 수급 호전 종목. (**ROE** 등 기초 체력 지표 포함, 해시태그#, 시가총액 배지 포함)
+5. **[산업 전망 및 투자 결론]**
+   - **타이틀:** "[섹터명] 섹터 향후 6~12개월 전망: [투자의견]"
+   - **상세 사유:** 3가지 핵심 근거 리스트.
+   - **최종 투자 결론:** 수석 애널리스트의 요약 평 및 전략 박스.
+
+---
+
+## 분석 가이드 및 주의사항
+- **시장 컨텍스트:** 분석 시점(2026년 4월)의 시장 상황(KOSPI 6,000선 시대, 정부 밸류업 정책 고도화 등)을 적극 반영하십시오.
+- **데이터 우선순위:** OpenDART의 공식 재무 데이터를 최우선으로 하되, 최신 시가총액과 기술적 위치(120MA)는 실시간 웹 데이터를 활용하십시오.
+- **자기 완결성:** 리포트 생성 시 별도의 외부 CSS 파일 없이 단일 HTML 파일 내에 모든 스타일을 포함(Internal CSS)하십시오.
+
+---
+
+## 부속 리소스 (Bundled Resources)
+
+### Scripts
+이 스킬은 데이터를 정밀하게 추출하기 위해 외부 Python 스크립트를 사용합니다. 만약 `scripts/fetch_dart_data.py` 파일이 없다면, 아래의 코드를 참고하여 파일을 생성한 후 실행하십시오.
+
+<details>
+<summary>scripts/fetch_dart_data.py 소스 코드</summary>
+
+```python
+import os
+import sys
+import json
+import requests
+import zipfile
+import io
+import xml.etree.ElementTree as ET
+from datetime import datetime
+
+def get_corp_code(api_key, ticker):
+    """종목코드(6자리)를 OpenDART corp_code(8자리)로 변환"""
+    url = f"https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key={api_key}"
+    resp = requests.get(url)
+    if resp.status_code != 200:
+        return None
+    
+    with zipfile.ZipFile(io.BytesIO(resp.content)) as zf:
+        with zf.open('CORPCODE.xml') as f:
+            tree = ET.parse(f)
+            root = tree.getroot()
+            for list_tag in root.findall('list'):
+                if list_tag.find('stock_code').text == ticker:
+                    return list_tag.find('corp_code').text
+    return None
+
+def get_financial_data(api_key, corp_code, year=None, reprt_code='11011'):
+    """단일회사 주요계정 조회 (11011: 사업보고서)"""
+    if year is None:
+        year = str(datetime.now().year - 1)
+    url = f"https://opendart.fss.or.kr/api/fnlttSinglAcnt.json?crtfc_key={api_key}&corp_code={corp_code}&bsns_year={year}&reprt_code={reprt_code}"
+    resp = requests.get(url)
+    if resp.status_code == 200:
+        return resp.json()
+    return None
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print(json.dumps({"error": "Ticker required"}))
+        sys.exit(1)
+
+    ticker = sys.argv[1]
+    api_key = os.getenv("OPENDART_API_KEY")
+    
+    if not api_key:
+        print(json.dumps({"error": "OPENDART_API_KEY environment variable not set"}))
+        sys.exit(1)
+
+    try:
+        corp_code = get_corp_code(api_key, ticker)
+        if not corp_code:
+            print(json.dumps({"error": f"Could not find corp_code for ticker {ticker}"}))
+            sys.exit(1)
+            
+        data = get_financial_data(api_key, corp_code)
+        if data and data.get('status') == '000':
+            # 필요한 지표만 필터링 (매출액, 영업이익, 당기순이익 등)
+            results = {}
+            for item in data.get('list', []):
+                if item['account_nm'] in ['매출액', '영업이익', '당기순이익', '자산총계', '부채총계', '자본총계']:
+                    results[item['account_nm']] = {
+                        "amount": item['thstrm_amount'],
+                        "unit": "KRW"
+                    }
+            print(json.dumps({"ticker": ticker, "corp_code": corp_code, "data": results}, ensure_ascii=False))
+        else:
+            print(json.dumps({"error": "API request failed", "details": data}))
+    except Exception as e:
+        print(json.dumps({"error": str(e)}))
+```
+</details>
+
+---
+**주의:** 리포트 최하단에는 반드시 다음 문구를 포함하십시오:
+*   "본 분석은 투자 참고용이며 투자 손실에 대한 책임을 지지 않음"
+*   "Data Source: OpenDART (FSS), Google Market Search"

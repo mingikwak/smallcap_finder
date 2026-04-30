@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>금융 섹터 수석 애널리스트 마스터 리포트 (V5.5 Masterpiece)</title>
+    <style>
+        :root {
+            --primary: #0f2027;
+            --secondary: #203a43;
+            --accent: #2c5364;
+            --value: #d35400;
+            --momentum: #16a085;
+            --dart-blue: #004a99;
+        }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; line-height: 1.8; color: #333; max-width: 1200px; margin: 0 auto; padding: 40px; background-color: #f1f3f5; }
+        .master-wrap { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border-top: 10px solid var(--primary); }
+        
+        header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 40px; margin-bottom: 50px; }
+        h1 { font-size: 2.8em; color: var(--primary); margin: 0; letter-spacing: -1px; }
+        .analyst-stamp { color: #888; margin-top: 15px; font-weight: 500; font-size: 1.1em; }
+        .dart-badge { display: inline-block; background: var(--dart-blue); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.8em; margin-bottom: 10px; }
+
+        .section-title { font-size: 1.8em; font-weight: 800; color: var(--primary); margin: 60px 0 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
+        
+        .table-container { overflow-x: auto; margin-bottom: 40px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; }
+        th { background: #f8f9fa; padding: 18px; border-bottom: 2px solid #dee2e6; font-size: 0.9em; color: #444; }
+        td { padding: 18px; border-bottom: 1px solid #eee; text-align: center; font-size: 0.9em; }
+        .badge { padding: 2px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; }
+        .badge-large { background: #e9ecef; color: #495057; }
+        .badge-small { background: #f1f3f5; color: #868e96; }
+
+        .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
+        .focus-item { background: #f8fbff; border: 1px solid #e1e8f0; padding: 25px; border-radius: 12px; }
+        .focus-item h4 { color: #004a99; margin-top: 0; margin-bottom: 12px; font-size: 1.15em; }
+        .focus-item p { font-size: 0.95em; color: #555; margin: 0; line-height: 1.6; }
+
+        .recommend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .card.value-card { border-top: 5px solid var(--value); }
+        .card.momentum-card { border-top: 5px solid var(--momentum); }
+        .card .name { font-size: 1.45em; font-weight: 800; display: block; margin-bottom: 5px; }
+        .card .ticker { font-size: 0.8em; color: #999; margin-bottom: 10px; display: block; }
+        .card .hashtags { font-size: 0.85em; color: var(--accent); font-weight: 600; margin-bottom: 15px; display: block; }
+        .card .metrics { font-size: 0.88em; margin: 15px 0; color: #444; background: #f9f9f9; padding: 15px; border-radius: 8px; line-height: 1.7; }
+        .card .opinion { font-size: 0.88em; border-top: 1px solid #f0f0f0; padding-top: 15px; font-style: italic; color: #666; line-height: 1.6; }
+        .market-cap-badge { background: #eee; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; color: #666; font-weight: normal; vertical-align: middle; }
+
+        .outlook-section { background: #1c2833; color: #f4f6f7; padding: 45px; border-radius: 15px; margin-top: 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .outlook-title { color: #1abc9c; font-size: 1.8em; font-weight: 800; border-bottom: 2px solid #1abc9c; padding-bottom: 15px; margin-bottom: 25px; }
+        .outlook-reasons h4 { color: #f39c12; margin-bottom: 15px; font-size: 1.25em; display: flex; align-items: center; }
+        .outlook-reasons ul { padding-left: 20px; font-size: 1em; color: #bdc3c7; line-height: 1.8; }
+        .outlook-reasons li { margin-bottom: 15px; }
+        .outlook-reasons b { color: #fff; }
+        .investment-conclusion { background: rgba(26, 188, 156, 0.1); border-left: 6px solid #1abc9c; padding: 25px; margin-top: 35px; border-radius: 0 10px 10px 0; }
+        .investment-conclusion h4 { color: #1abc9c; margin-top: 0; margin-bottom: 12px; font-size: 1.35em; }
+        .investment-conclusion p { margin: 0; font-weight: 600; font-size: 1.1em; color: #ecf0f1; line-height: 1.7; }
+
+        footer { text-align: center; color: #aaa; font-size: 0.85em; margin-top: 80px; padding-bottom: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="master-wrap">
+        <header>
+            <div class="dart-badge">Verified by OpenDART API (V5.5)</div>
+            <h1>금융업 통합 투자 마스터 리포트</h1>
+            <div class="analyst-stamp">Hidden Small Finder | Senior Analyst Brandon | 2026.04.30</div>
+        </header>
+
+        <div class="section-title">1. DART 검증 벤치마크 요약 (대형주)</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>종목명 (코드)</th>
+                        <th>시가총액</th>
+                        <th>자본총계 (23')</th>
+                        <th>영업이익 (23')</th>
+                        <th>ROE</th>
+                        <th>PBR</th>
+                        <th>PER</th>
+                        <th>120MA 위치</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>KB금융</strong> (105560)</td>
+                        <td>59.4조 <span class="badge badge-large">대형</span></td>
+                        <td>58.6조</td>
+                        <td>6.38조</td>
+                        <td>9.1%</td>
+                        <td>1.02</td>
+                        <td>10.5</td>
+                        <td style="color:var(--momentum)">상회 (정배열)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>신한지주</strong> (055550)</td>
+                        <td>51.8조 <span class="badge badge-large">대형</span></td>
+                        <td>55.8조</td>
+                        <td>6.39조</td>
+                        <td>10.2%</td>
+                        <td>0.82</td>
+                        <td>9.9</td>
+                        <td style="color:var(--momentum)">상회 (안정적)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>메리츠금융</strong> (138040)</td>
+                        <td>23.8조 <span class="badge badge-large">대형</span></td>
+                        <td>10.1조</td>
+                        <td>2.93조</td>
+                        <td>22.7%</td>
+                        <td>1.87</td>
+                        <td>9.0</td>
+                        <td style="color:var(--value)">상회 (신고가)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-title">2. 금융 섹터 핵심 분석 포인트</div>
+        <div class="focus-grid">
+            <div class="focus-item">
+                <h4>밸류업 프로그램 가시화</h4>
+                <p>자사주 소각 및 분기 배당 정례화 등 주주환원율 35% 초과 달성 기업들이 시장을 주도하고 있습니다.</p>
+            </div>
+            <div class="focus-item">
+                <h4>금리 인하 기조의 수혜</h4>
+                <p>예대마진 축소 우려보다 조달 비용 감소 및 증시 활성화에 따른 비은행 부문 수익성 개선이 부각됩니다.</p>
+            </div>
+            <div class="focus-item">
+                <h4>IFRS17 안착 및 이익 체력</h4>
+                <p>보험사들의 신계약 서비스마진(CSM) 기반 이익 가시성이 확보되며 역대 최대 실적을 경신 중입니다.</p>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span style="color:var(--value)">3. Value Track:</span> 장기 가치 투자 Top 3
+        </div>
+        <div class="recommend-grid">
+            <div class="card value-card">
+                <span class="name">흥국화재 <span class="market-cap-badge">2,900억</span></span>
+                <span class="ticker">000540 (KOSPI)</span>
+                <span class="hashtags">#저PBR #역대최저PER #CSM성장</span>
+                <div class="metrics">
+                    <strong>ROE: 18.1%</strong><br>
+                    실질 PBR: 0.35<br>
+                    실질 PER: 1.9
+                </div>
+                <p class="opinion">"압도적인 이익 성장 대비 시총이 극심한 저평가 상태. 자본총계 1.3조 대비 시총 2,900억은 비상식적 수준."</p>
+            </div>
+            <div class="card value-card">
+                <span class="name">대신증권 <span class="market-cap-badge">1.56조</span></span>
+                <span class="ticker">003540 (KOSPI)</span>
+                <span class="hashtags">#배당주 #부동산금융 #자산재평가</span>
+                <div class="metrics">
+                    <strong>ROE: 5.2%</strong><br>
+                    실질 PBR: 0.38<br>
+                    실질 PER: 7.3
+                </div>
+                <p class="opinion">"증시 활성화 수혜와 사옥 재평가 등 자산 가치 부각. PBR 0.3배 대의 안정적인 안전마진 확보."</p>
+            </div>
+            <div class="card value-card">
+                <span class="name">신한지주 <span class="market-cap-badge">51.8조</span></span>
+                <span class="ticker">055550 (KOSPI)</span>
+                <span class="hashtags">#대형주저평가 #분기배당 #밸류업</span>
+                <div class="metrics">
+                    <strong>ROE: 10.2%</strong><br>
+                    실질 PBR: 0.82<br>
+                    실질 PER: 9.9
+                </div>
+                <p class="opinion">"리딩금융 경쟁 속에서 KB금융 대비 상대적으로 낮은 PBR 유지. 안정적인 ROE와 배당 매력 겸비."</p>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span style="color:var(--momentum)">4. Momentum Track:</span> 단기 추세 매매 Top 3
+        </div>
+        <div class="recommend-grid">
+            <div class="card momentum-card">
+                <span class="name">메리츠금융 <span class="market-cap-badge">23.8조</span></span>
+                <span class="ticker">138040 (KOSPI)</span>
+                <span class="hashtags">#신고가 #주주환원대장 #고ROE</span>
+                <div class="metrics">
+                    <strong>ROE: 22.7%</strong><br>
+                    120MA 대비: 강력 상회<br>
+                    추세: 정배열 신고가 채널
+                </div>
+                <p class="opinion">"추세적 상승의 정석. 120MA 위에서 강력한 지지를 받으며 고점을 지속 돌파하는 중."</p>
+            </div>
+            <div class="card momentum-card">
+                <span class="name">KB금융 <span class="market-cap-badge">59.4조</span></span>
+                <span class="ticker">105560 (KOSPI)</span>
+                <span class="hashtags">#외국인수급 #밸류업대장 #1배돌파</span>
+                <div class="metrics">
+                    <strong>ROE: 9.1%</strong><br>
+                    120MA 위치: 정배열 상단<br>
+                    수급: 외인/기관 동반 매수
+                </div>
+                <p class="opinion">"PBR 1배 돌파 이후에도 외인의 강력한 수급 유입. 금융 섹터 지수의 방향성을 결정하는 핵심."</p>
+            </div>
+            <div class="card momentum-card">
+                <span class="name">제주은행 <span class="market-cap-badge">4,160억</span></span>
+                <span class="ticker">006220 (KOSPI)</span>
+                <span class="hashtags">#변동성매매 #디지털전환 #골든크로스</span>
+                <div class="metrics">
+                    <strong>ROE: 2.3%</strong><br>
+                    120MA 위치: 골든크로스 발생<br>
+                    베타 계수: 섹터 내 최상위
+                </div>
+                <p class="opinion">"코스피 불장 국면에서 중소형 금융주로서의 탄력적인 움직임 포착. 기술적 반등 유효."</p>
+            </div>
+        </div>
+
+        <div class="outlook-section">
+            <div class="outlook-title">금융업 섹터 향후 6~12개월 전망: [Overweight / 비중확대]</div>
+            
+            <div class="outlook-reasons">
+                <h4>📢 섹터 비중 확대의 상세 사유</h4>
+                <ul>
+                    <li><b>자본 효율성 재평가 본격화:</b> 단순한 저PBR 탈피를 넘어 ROE 10% 이상 달성을 위한 체질 개선이 기업 가치의 새로운 기준이 될 전망입니다.</li>
+                    <li><b>수급의 선순환 구조 정착:</b> 밸류업 펀드 및 관련 ETF로의 자금 유입이 대형 금융주들을 하방 지지하며 안정적인 우상향을 유도합니다.</li>
+                    <li><b>배당 매력의 극대화:</b> 분기 배당 정례화로 인해 특정 시점의 배당락 리스크가 분산되어 장기 보유 매력이 과거 어느 때보다 높습니다.</li>
+                </ul>
+            </div>
+
+            <div class="investment-conclusion">
+                <h4>🎯 수석 애널리스트 최종 투자 결론</h4>
+                <p>"금융 섹터는 이제 '저평가 해소'를 넘어 '실적 기반의 고밸류에이션 정착' 구간에 진입했습니다. 장기 가치 투자자는 <b>흥국화재</b>를, 단기 추세 매매자는 <b>메리츠금융</b>을 핵심 포트폴리오로 가져가십시오."</p>
+            </div>
+        </div>
+
+        <footer>
+            "본 분석은 투자 참고용이며 투자 손실에 대한 책임을 지지 않음"<br>
+            Data Source: OpenDART (FSS), Google Market Search | V5.5 Masterpiece Edition
+        </footer>
+    </div>
+</body>
+</html>
