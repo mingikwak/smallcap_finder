@@ -1,5 +1,6 @@
-OpenDARTReader==1.0.xx
+OpenDARTReader>=0.1.6
 pandas
 jinja2
 beautifulsoup4
 requests
+python-dotenv
