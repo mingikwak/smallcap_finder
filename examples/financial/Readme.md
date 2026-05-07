@@ -1,12 +1,11 @@
-examples/
-├── 🏦 financial/                # 금융 섹터 예시 폴더
-│   ├── run_financial_report.py  # 금융 데이터 수집 및 리포트 생성 스크립트
-│   ├── financial_template.html  # 금융 리포트 전용 HTML 템플릿
-│   └── sample_financial.html    # 결과물 샘플 (V5.5 Masterpiece 버전)
-│
-├── 📟 semiconductor/            # 반도체 섹터 예시 폴더
-│   ├── run_semi_report.py       # 반도체 데이터 수집 및 리포트 생성 스크립트
-│   ├── semi_template.html       # 반도체 리포트 전용 HTML 템플릿
-│   └── sample_semi.html         # 결과물 샘플 (V5.5 Masterpiece 버전)
-│
-└── README.md                    # 각 예시 실행 방법 가이드
+# 🏦 Financial Industry Example
+
+이 폴더는 **OpenDART API**를 활용하여 금융 섹터(증권, 보험, 은행)의 저PBR 종목을 발굴하고 리포트를 생성하는 예시를 담고 있습니다.
+
+### 📂 주요 파일
+* [📊 금융 마스터 리포트 샘플 (V5.5)](financial_master_report_v5.5_260507.html): 2026년 5월 기준 생성된 실제 리포트 결과물입니다.
+* `run_financial_report.py`: (추가 예정) 금융 데이터를 자동으로 수집하여 리포트를 생성하는 실행 스크립트입니다.
+
+### 💡 분석 포인트
+* **실질 PBR 계산:** DART 공시 자본총계와 실시간 시총을 비교하여 안전마진 확보
+* **수급 모멘텀:** 120일 이동평균선 돌파 여부 및 거래량 분석
