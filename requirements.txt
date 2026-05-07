@@ -1,0 +1,5 @@
+OpenDARTReader==1.0.xx
+pandas
+jinja2
+beautifulsoup4
+requests
