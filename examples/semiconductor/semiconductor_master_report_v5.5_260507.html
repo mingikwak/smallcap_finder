@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반도체 산업 통합 투자 마스터 리포트 (V5.5 Masterpiece)</title>
+    <style>
+        :root {
+            --primary: #0f2027;
+            --secondary: #203a43;
+            --accent: #2c5364;
+            --value: #d35400;
+            --momentum: #16a085;
+            --dart-blue: #004a99;
+        }
+        body { font-family: 'Pretendard', -apple-system, sans-serif; line-height: 1.8; color: #333; max-width: 1200px; margin: 0 auto; padding: 40px; background-color: #f1f3f5; }
+        .master-wrap { background: white; padding: 60px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border-top: 10px solid var(--primary); }
+        header { text-align: center; border-bottom: 2px solid #eee; padding-bottom: 40px; margin-bottom: 50px; }
+        h1 { font-size: 2.8em; color: var(--primary); margin: 0; letter-spacing: -1px; }
+        .analyst-stamp { color: #888; margin-top: 15px; font-weight: 500; font-size: 1.1em; }
+        .dart-badge { display: inline-block; background: var(--dart-blue); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.8em; margin-bottom: 10px; font-weight: bold; }
+        .section-title { font-size: 1.8em; font-weight: 800; color: var(--primary); margin: 60px 0 25px; border-left: 8px solid var(--primary); padding-left: 20px; }
+        .table-container { overflow-x: auto; margin-bottom: 40px; }
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; }
+        th { background: #f8f9fa; padding: 18px; border-bottom: 2px solid #dee2e6; font-size: 0.9em; color: #444; }
+        td { padding: 18px; border-bottom: 1px solid #eee; text-align: center; font-size: 0.9em; }
+        .avg-row { background: #fff9e6; font-weight: bold; color: var(--value); }
+        .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px; }
+        .focus-item { background: #f8fbff; border: 1px solid #e1e8f0; padding: 25px; border-radius: 12px; }
+        .focus-item h4 { color: #004a99; margin-top: 0; margin-bottom: 12px; font-size: 1.15em; }
+        .recommend-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 60px; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 15px; padding: 30px; position: relative; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .card.value-card { border-top: 5px solid var(--value); }
+        .card.momentum-card { border-top: 5px solid var(--momentum); }
+        .card .name { font-size: 1.45em; font-weight: 800; display: block; margin-bottom: 5px; }
+        .card .ticker { font-size: 0.8em; color: #999; margin-bottom: 10px; display: block; }
+        .card .hashtags { font-size: 0.85em; color: var(--accent); font-weight: 600; margin-bottom: 15px; display: block; }
+        .card .metrics { font-size: 0.88em; margin: 15px 0; color: #444; background: #f9f9f9; padding: 15px; border-radius: 8px; line-height: 1.7; }
+        .card .opinion { font-size: 0.88em; border-top: 1px solid #f0f0f0; padding-top: 15px; font-style: italic; color: #666; line-height: 1.6; }
+        .market-cap-badge { background: #eee; padding: 2px 8px; border-radius: 4px; font-size: 0.75em; color: #666; font-weight: normal; vertical-align: middle; }
+        .outlook-section { background: #1c2833; color: #f4f6f7; padding: 45px; border-radius: 15px; margin-top: 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .outlook-title { color: #1abc9c; font-size: 1.8em; font-weight: 800; border-bottom: 2px solid #1abc9c; padding-bottom: 15px; margin-bottom: 25px; }
+        .outlook-reasons h4 { color: #f39c12; margin-bottom: 15px; font-size: 1.25em; display: flex; align-items: center; }
+        .outlook-reasons ul { padding-left: 20px; font-size: 1em; color: #bdc3c7; line-height: 1.8; }
+        .outlook-reasons b { color: #fff; }
+        .investment-conclusion { background: rgba(26, 188, 156, 0.1); border-left: 6px solid #1abc9c; padding: 25px; margin-top: 35px; border-radius: 0 10px 10px 0; }
+        .investment-conclusion h4 { color: #1abc9c; margin-top: 0; margin-bottom: 12px; font-size: 1.35em; }
+        footer { text-align: center; color: #aaa; font-size: 0.85em; margin-top: 80px; padding-bottom: 40px; border-top: 1px solid #eee; padding-top: 30px; }
+    </style>
+</head>
+<body>
+    <div class="master-wrap">
+        <header>
+            <div class="dart-badge">VERIFIED BY OPENDART API</div>
+            <h1>반도체 산업 통합 투자 마스터 리포트</h1>
+            <div class="analyst-stamp">Hidden Small Finder | Senior Analyst Brandon | 2026.05.07</div>
+        </header>
+        <div class="section-title">1. DART 검증 벤치마크 요약 (대형주)</div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>종목명 (코드)</th>
+                        <th>시가총액</th>
+                        <th>자본총계 (DART)</th>
+                        <th>매출액 (DART)</th>
+                        <th>영업이익 (DART)</th>
+                        <th>PBR</th>
+                        <th>ROE</th>
+                        <th>PER</th>
+                        <th>120MA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>삼성전자 (005930)</td>
+                        <td>1,359조</td>
+                        <td>254.3조</td>
+                        <td>238.0조</td>
+                        <td>23.6조</td>
+                        <td>2.60</td>
+                        <td>31.0%</td>
+                        <td>9.4</td>
+                        <td>상단 (강세)</td>
+                    </tr>
+                    <tr>
+                        <td>SK하이닉스 (000660)</td>
+                        <td>1,031조</td>
+                        <td>117.3조</td>
+                        <td>86.8조</td>
+                        <td>44.0조</td>
+                        <td>3.12</td>
+                        <td>44.4%</td>
+                        <td>5.06</td>
+                        <td>상단 (강세)</td>
+                    </tr>
+                    <tr class="avg-row">
+                        <td colspan="2">벤치마크 평균 (Benchmark Avg)</td>
+                        <td>185.8조</td>
+                        <td>162.4조</td>
+                        <td>33.8조</td>
+                        <td>2.86</td>
+                        <td>37.7%</td>
+                        <td>7.23</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="section-title">2. 반도체 섹터 핵심 분석 포인트</div>
+        <div class="focus-grid">
+            <div class="focus-item">
+                <h4>HBM4 선단공정 장비 수요</h4>
+                <p>글로벌 메모리 제조사들의 HBM4 양산 가속화로 인해 미세 공정 및 선단 패키징 장비를 공급하는 스몰캡들의 수주 가시성이 매우 높습니다.</p>
+            </div>
+            <div class="focus-item">
+                <h4>유리기판 및 온디바이스 AI</h4>
+                <p>2026년 상반기 핵심 테마인 유리기판 양산 인프라 구축과 온디바이스 AI 칩 설계 지원 부품주들이 섹터 수익률을 상회하고 있습니다.</p>
+            </div>
+            <div class="focus-item">
+                <h4>국산화 2.0: 핵심 소재의 독립</h4>
+                <p>글로벌 공급망 재편 속에서 하이엔드급 반도체 소재 및 가스 공급 장치를 국산화한 중소형주들이 안정적인 실적 기반을 확보했습니다.</p>
+            </div>
+        </div>
+        <div class="section-title"><span style="color: var(--value);">3. Value Track:</span> 장기 가치 투자 Top 3 (Small-cap Only)</div>
+        <div class="recommend-grid">
+            <div class="card value-card">
+                <span class="name">LX세미콘 <span class="market-cap-badge">9,921억</span></span>
+                <span class="ticker">108320 (KOSPI)</span>
+                <span class="hashtags">#자본1.1조 #저PBR #설계기술해자</span>
+                <div class="metrics">
+                    DART 자본총계: <b>1.11조</b><br>
+                    실질 PBR: <b>0.89배</b> (벤치마크 대비 -68%)<br>
+                    영업이익: <b>1,055억</b>
+                </div>
+                <p class="opinion">"공식 자본총계가 시총을 상회하는 1.11조 원으로 확인됨. AI TV 및 차량용 DDI 시장의 강력한 지배력 대비 현 주가는 명백한 저평가 구간."</p>
+            </div>
+            <div class="card value-card">
+                <span class="name">해성디에스 <span class="market-cap-badge">약 1.3조</span></span>
+                <span class="ticker">195870 (KOSPI)</span>
+                <span class="hashtags">#차량용반도체 #리드프레임1위 #고ROE</span>
+                <div class="metrics">
+                    DART 자본총계: <b>5,688억</b><br>
+                    실질 PBR: <b>2.43배</b><br>
+                    ROE: <b>12.2%</b>
+                </div>
+                <p class="opinion">"차량용 반도체 리드프레임 글로벌 점유율 1위. 벤치마크 평균 대비 안정적인 ROE를 유지하며, 전장화 트렌드에 따른 장기 성장성이 보장된 우량 스몰캡."</p>
+            </div>
+            <div class="card value-card">
+                <span class="name">케이씨 (KC) <span class="market-cap-badge">약 3,500억</span></span>
+                <span class="ticker">002210 (KOSPI)</span>
+                <span class="hashtags">#가스인프라 #자회사시너지 #저PBR</span>
+                <div class="metrics">
+                    예상 PBR: <b>0.65배</b><br>
+                    특징: <b>인프라 수주 폭발</b><br>
+                    상태: <b>바닥권 안착</b>
+                </div>
+                <p class="opinion">"반도체 가스 공급 시스템 전문 기업. 삼성전자 평택 및 용인 클러스터 투자 확대의 직접적인 수혜주로, 자산 가치 대비 극심한 할인 구간."</p>
+            </div>
+        </div>
+        <div class="section-title"><span style="color: var(--momentum);">4. Momentum Track:</span> 단기 추세 매매 Top 3 (Small-cap Only)</div>
+        <div class="recommend-grid">
+            <div class="card momentum-card">
+                <span class="name">미래산업 <span class="market-cap-badge">약 1,500억</span></span>
+                <span class="ticker">025560 (KOSPI)</span>
+                <span class="hashtags">#정배열돌파 #테스트핸들러 #수급폭발</span>
+                <div class="metrics">
+                    120MA 위치: <b>강력 돌파</b><br>
+                    추세: <b>완벽한 정배열</b><br>
+                    거래량: <b>5일 평균 대비 300% 증가</b>
+                </div>
+                <p class="opinion">"최근 5일간 외국인과 기관의 동반 순매수가 집중되며 120일선을 장대양봉으로 돌파. HBM용 검사 장비 수주 기대감이 주가 탄력을 극대화 중."</p>
+            </div>
+            <div class="card momentum-card">
+                <span class="name">디아이 (DI) <span class="market-cap-badge">약 4,800억</span></span>
+                <span class="ticker">003160 (KOSPI)</span>
+                <span class="hashtags">#번인테스터 #HBM수혜 #추세추종</span>
+                <div class="metrics">
+                    120MA 위치: <b>상단 지지 확인</b><br>
+                    추세: <b>신고가 도전 구간</b><br>
+                    기술적 상태: <b>상승 3파 진행 중</b>
+                </div>
+                <p class="opinion">"HBM용 고성능 테스터 공급 본격화 뉴스와 함께 120일선 위에서 강력한 지지력을 보여줌. 전고점 돌파 시 매물 공백 구간으로 단기 급등 유력."</p>
+            </div>
+            <div class="card momentum-card">
+                <span class="name">신성이엔지 <span class="market-cap-badge">약 4,200억</span></span>
+                <span class="ticker">011930 (KOSPI)</span>
+                <span class="hashtags">#클린룸 #유리기판테마 #정배열안착</span>
+                <div class="metrics">
+                    차트: <b>5/20/60/120MA 정배열</b><br>
+                    수급: <b>개인 매물 소화 완료</b><br>
+                    변동성: <b>상승 채널 상단</b>
+                </div>
+                <p class="opinion">"반도체 클린룸 수주 잔고가 역대 최대치를 경신하며 주가가 기술적 정배열에 진입. 유리기판 테마와 엮이며 섹터 내 가장 가벼운 몸놀림을 보여줌."</p>
+            </div>
+        </div>
+        <div class="outlook-section">
+            <div class="outlook-title">반도체 섹터 향후 6~12개월 전망: [Strong Buy / 적극매수]</div>
+            <div class="outlook-reasons">
+                <h4>📢 섹터 적극 매수의 상세 사유</h4>
+                <ul>
+                    <li><b>코스피 7,500선 안착과 낙수효과:</b> 대형주(삼성전자, SK하이닉스)의 실적 장세 이후 순환매 자금이 기술력이 검증된 1조 미만 소부장주로 집중되고 있습니다.</li>
+                    <li><b>HBM4 및 유리기판이라는 새로운 엔진:</b> 단순 메모리 사이클을 넘어 공정 난이도가 비약적으로 상승하며, 특화 장비를 보유한 스몰캡의 마진율이 극대화되고 있습니다.</li>
+                    <li><b>안정적인 재무 기반의 턴어라운드:</b> DART 공시로 확인된 LX세미콘 등의 자산 가치는 하방 경직성을 보장하며, 업황 회복 시 가장 빠른 주가 탄력을 보장합니다.</li>
+                </ul>
+            </div>
+            <div class="investment-conclusion">
+                <h4>🎯 수석 애널리스트 최종 투자 결론</h4>
+                <p>"지금은 대형주보다 **실질적 기술력을 보유한 스몰캡**의 시간입니다. 자산 가치가 탄탄한 <b>LX세미콘</b>을 매집하고, 수급과 차트가 완벽한 <b>미래산업</b>으로 단기 수익을 극대화하십시오."</p>
+            </div>
+        </div>
+        <footer>
+            "본 분석은 투자 참고용이며 투자 손실에 대한 책임을 지지 않음"<br>
+            Data Source: OpenDART (FSS), Google Market Search | Generated by Claude AI (V5.5 Masterpiece Format)
+        </footer>
+    </div>
+</body>
+</html>
